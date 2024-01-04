@@ -5,6 +5,7 @@ export default function TextForm(props) {
   const[myStyle,setMyStyle] = useState(
   {
     fontWeight :"normal"
+    
   }
   );
 
@@ -69,19 +70,19 @@ setText(event.target.value);
       <div className="container"  style={{color:props.mode==='light'?'black':'white'}}> 
     <h1 className='mt-5'>Enter Text Below</h1>
     <textarea  id = 'mybox' style={myStyle}  className='form-control' value={Text} rows="10" onChange={handleOnChange}></textarea>
-    <button type="button" disabled = {Text.length === 0} className="btn btn-success mt-4 mx-1" onClick={handleUpClick}>UpperCase</button>
-    <button type="button" disabled = {Text.length === 0} className="btn btn-success mt-4 mx-1" onClick={handleLoClick}>LowerCase</button>
-    <button type="button" disabled = {Text.length === 0} className="btn btn-success mt-4 mx-1" onClick={Captilize}>Captilize</button>
-    <button type="button" disabled = {Text.length === 0} className="btn btn-success mt-4 mx-1" onClick={boldToogle}>Bold</button>
-    <button type="button" disabled = {Text.length === 0} className="btn btn-success mt-4 mx-1" onClick={speak}>Speak</button>
+    <button disabled = {Text.length===0} type="button" className="btn btn-success mt-4 mx-1" onClick={handleUpClick}>UpperCase</button>
+    <button disabled = {Text.length===0} type="button" className="btn btn-success mt-4 mx-1" onClick={handleLoClick}>LowerCase</button>
+    <button disabled = {Text.length===0} type="button" className="btn btn-success mt-4 mx-1" onClick={Captilize}>Captilize</button>
+    <button  disabled = {Text.length===0}type="button" className="btn btn-success mt-4 mx-1" onClick={boldToogle}>Bold</button>
+    <button  disabled = {Text.length===0} type="button" className="btn btn-success mt-4 mx-1" onClick={speak}>Speak</button>
     
     
     </div>
     <div className='container' style={{color:props.mode ==='light'?'black':'white'}}>
 <h2 className='mt-3'>Text Summary</h2>
 <p><b>No. of Characters:</b> {Text.length} </p>
-<p><b>No. of Words:</b> {Text.split(" ").filter((element)=>{return element.length!==0}).length}</p>
-<p><b>Reading Time: </b>{Text.split(" ").filter((element)=>{return element.length!==0}).length *0.008} minutes.</p>
+<p><b>No. of Words:</b> {Text.split(/\s+/).filter((element)=>{return element!=0}).length}</p>
+<p><b>Reading Time: </b>{Text.split(" ").filter((element)=>{return element!=0}).length *0.008} Minutes.</p>
 <h3>Preview</h3>
 <p>{Text}</p>
 
